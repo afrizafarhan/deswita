@@ -1,5 +1,4 @@
-import userRoutes from "./user_routes";
 import { ServerRoute } from "@hapi/hapi";
-const routes : ServerRoute[] = [...userRoutes];
+const routes : ServerRoute[] = [];
 
 export default routes;

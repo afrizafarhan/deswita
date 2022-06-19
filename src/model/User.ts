@@ -1,15 +1,17 @@
-class User {
-  name: string;
-  email: string;
-  username: string;
-  password: string;
+import { PrismaClient } from "@prisma/client";
 
-  constructor(name: string, email: string, username: string, password: string){
-    this.name = name;
-    this.email = email;
-    this.username = username;
-    this.password = password;
+
+const User = {
+  async createUser(user: User, prisma: PrismaClient){
+    prisma.user.create({
+      data: {
+        name: user.name,
+        email: user.email,
+        username: user.username,
+        password: user.password,
+      }
+    })
   }
 }
 
-export default User;
+export default User
