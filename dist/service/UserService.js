@@ -8,20 +8,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const User = {
-    createUser(user, prisma) {
-        var _a;
-        return __awaiter(this, void 0, void 0, function* () {
-            yield prisma.user.create({
-                data: {
-                    name: user.name,
-                    email: user.email,
-                    username: (_a = user.username) !== null && _a !== void 0 ? _a : user.email,
-                    password: user.password,
-                }
-            });
-        });
+const client_1 = require("@prisma/client");
+const User_1 = __importDefault(require("../model/User"));
+const prisma = new client_1.PrismaClient();
+const UserService = {
+    addNewUser: (user) => {
+        return User_1.default.createUser(user, prisma)
+            .then((res) => {
+            return {
+                status: 201,
+                message: 'Success add user'
+            };
+        })
+            .catch(e => {
+            throw e;
+        })
+            .finally(() => __awaiter(void 0, void 0, void 0, function* () {
+            yield prisma.$disconnect;
+        }));
     }
 };
-exports.default = User;
+exports.default = UserService;

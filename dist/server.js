@@ -16,7 +16,7 @@ const hapi_1 = __importDefault(require("@hapi/hapi"));
 const routes_1 = __importDefault(require("./routes/routes"));
 const init = () => __awaiter(void 0, void 0, void 0, function* () {
     const server = hapi_1.default.server({
-        port: 3000,
+        port: 3001,
         host: 'localhost'
     });
     server.route(routes_1.default);

@@ -3,11 +3,11 @@ import { PrismaClient } from "@prisma/client";
 
 const User = {
   async createUser(user: User, prisma: PrismaClient){
-    prisma.user.create({
+    await prisma.user.create({
       data: {
         name: user.name,
         email: user.email,
-        username: user.username,
+        username: user.username ?? user.email,
         password: user.password,
       }
     })

@@ -1,6 +1,6 @@
-interface User { 
+interface User {
   name: string,
   email: string,
-  username: string,
+  username?: string,
   password: string
 }
