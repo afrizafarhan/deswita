@@ -11,6 +11,13 @@ const User = {
         password: user.password,
       }
     })
+  },
+  async emailExist(email: string, prisma: PrismaClient) {
+    await prisma.user.findUnique({
+      where: {
+        email,
+      }
+    })
   }
 }
 

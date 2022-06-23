@@ -6,7 +6,7 @@ const UserRoutes = {
   route: [{
     method: 'POST',
     path: basePath + 'signup',
-    handler: UserController.signup.handler,
+    handler: UserController.signup,
   }]
 }
 

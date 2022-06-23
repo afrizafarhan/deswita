@@ -17,6 +17,15 @@ const UserService = {
             .finally(async () => {
                 await prisma.$disconnect
             })
+    },
+    emailExist: (email: string) => {
+        return User.emailExist(email, prisma).then((res) => true).catch(
+            e => {
+                throw e
+            }
+        ).finally(async () => {
+            await prisma.$disconnect()
+        })
     }
 }
 export default UserService
